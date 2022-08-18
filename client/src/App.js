@@ -26,7 +26,6 @@ function App() {
       data = data.filter((el) =>
         el.course.toLowerCase().includes(search.toLowerCase())
       );
-      let fixedData = []
       if (currentCategories.length !== 0) {
         for (let i = 0; i < currentCategories.length; i++) {
           data = data.filter((el) => el.tech.includes(currentCategories[i]))
@@ -102,16 +101,18 @@ function App() {
         <div className="flex-1 p-2">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {courses.map((course) => (
-              <div className="flex flex-col px-2 py-4 space-y-4 border rounded-lg bg-slate-100">
-                <img className="w-full" src={course.program_img} />
-                <h1 className="text-sky-400 text-lg font-semib">
+              <div className="flex flex-col space-y-4 rounded-lg bg-slate-100" >
+                <img className="w-full rounded-tl-lg rounded-tr-lg" src={course.program_img} />
+                <div className="px-2 py-4">
+                <h1 className="text-sky-400 text-lg font-semibold pb-2">
                   {course.course}
                 </h1>
-                <h1 className="text-slate-500">
+                <h1 className="text-slate-500 pb-2">
                   {course.age_start} - {course.age_end} Tahun -{" "}
                   {course.duration} Jam
                 </h1>
                 <h1 className="text-sky-400 text-md">{course.price}</h1>
+                </div>
               </div>
             ))}
           </div>
